@@ -6,35 +6,46 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    private array $staff = [
+        ['name' => 'Елена',  'position' => 'Генеральный директор', 'image' => 'staff-6.jpg'],
+        ['name' => 'Алексей',   'position' => 'Директор по производству',  'image' => 'staff-7.jpg'],
+        //['name' => 'Анна Морозова',   'position' => 'Мастер по окнам',       'image' => 'staff-3.jpg'],
+    ];
+
+    private array $testimonials = [
+        ['image' => 'person_1.jpg', 'name' => 'Ольга Смирнова',   'position' => 'Менеджер по маркетингу'],
+        ['image' => 'person_2.jpg', 'name' => 'Елена Валентиновна',  'position' => 'Директор компании'],
+        ['image' => 'person_3.jpg', 'name' => 'Наталья Попова',   'position' => 'Владелец квартиры'],
+    ];
+
+    private array $plans = [
+        ['icon' => 'flaticon-sprayer',       'title' => 'Стартовый', 'price' => '2 990', 'active' => false],
+        ['icon' => 'flaticon-vacuum-cleaner', 'title' => 'Стандарт', 'price' => '4 990', 'active' => true],
+        ['icon' => 'flaticon-tap',            'title' => 'Премиум',  'price' => '7 490', 'active' => false],
+        ['icon' => 'flaticon-cleaning',       'title' => 'Платинум', 'price' => '9 990', 'active' => false],
+    ];
+
     public function home()
     {
-        $staff = [
-            ['name' => 'Лариса Волкова',  'position' => 'Уборщица офисов',       'image' => 'staff-1.jpg'],
-            ['name' => 'Дмитрий Орлов',   'position' => 'Специалист по коврам',  'image' => 'staff-2.jpg'],
-            ['name' => 'Анна Морозова',   'position' => 'Мастер по окнам',       'image' => 'staff-3.jpg'],
-        ];
+        $staff = $this->staff;
 
-        $testimonials = [
-            ['image' => 'person_1.jpg', 'name' => 'Ольга Смирнова',   'position' => 'Менеджер по маркетингу'],
-            ['image' => 'person_2.jpg', 'name' => 'Андрей Кузнецов',  'position' => 'Директор компании'],
-            ['image' => 'person_3.jpg', 'name' => 'Наталья Попова',   'position' => 'Владелец квартиры'],
-        ];
+        $testimonials = $this->testimonials;
 
         $works = [
-            ['image' => 'work-1.jpg', 'title' => 'Уборка дома'],
-            ['image' => 'work-2.jpg', 'title' => 'Мытьё окон'],
-            ['image' => 'work-3.jpg', 'title' => 'Чистка бассейна'],
-            ['image' => 'work-4.jpg', 'title' => 'Уборка офиса'],
-            ['image' => 'work-5.jpg', 'title' => 'Чистка ковров'],
-            ['image' => 'work-6.jpg', 'title' => 'Уборка сада'],
-            ['image' => 'work-7.jpg', 'title' => 'Чистка ковров'],
-            ['image' => 'work-8.jpg', 'title' => 'Чистка бассейна'],
+            ['image' => 'i (18).webp', 'title' => 'Уборка дома'],
+            ['image' => 'i (18).webp', 'title' => 'Мытьё окон'],
+            ['image' => 'i (18).webp', 'title' => 'Чистка бассейна'],
+            ['image' => 'i (18).webp', 'title' => 'Уборка офиса'],
+            ['image' => 'i (18).webp', 'title' => 'Чистка ковров'],
+            ['image' => 'i (18).webp', 'title' => 'Уборка сада'],
+            ['image' => 'i (18).webp', 'title' => 'Чистка ковров'],
+            ['image' => 'i (18).webp', 'title' => 'Чистка бассейна'],
         ];
 
         $latestPosts = [
-            ['image' => 'image_1.jpg', 'author_image' => 'person_2.jpg', 'title' => '10 советов по уходу за окнами'],
-            ['image' => 'image_2.jpg', 'author_image' => 'person_3.jpg', 'title' => 'Как выбрать клининговую компанию'],
-            ['image' => 'image_3.jpg', 'author_image' => 'person_1.jpg', 'title' => 'Экологичные средства для уборки'],
+            //['image' => 'image_1.jpg', 'author_image' => 'person_2.jpg', 'title' => '10 советов по уходу за окнами'],
+            //['image' => 'image_2.jpg', 'author_image' => 'person_3.jpg', 'title' => 'Как выбрать клининговую компанию'],
+            //['image' => 'image_3.jpg', 'author_image' => 'person_1.jpg', 'title' => 'Экологичные средства для уборки'],
         ];
 
         return view('home', compact('staff', 'testimonials', 'works', 'latestPosts'));
@@ -42,17 +53,9 @@ class PageController extends Controller
 
     public function about()
     {
-        $staff = [
-            ['name' => 'Лариса Волкова',  'position' => 'Уборщица офисов',       'image' => 'staff-1.jpg'],
-            ['name' => 'Дмитрий Орлов',   'position' => 'Специалист по коврам',  'image' => 'staff-2.jpg'],
-            ['name' => 'Анна Морозова',   'position' => 'Мастер по окнам',       'image' => 'staff-3.jpg'],
-        ];
+        $staff = $this->staff;
 
-        $testimonials = [
-            ['image' => 'person_1.jpg', 'name' => 'Ольга Смирнова',   'position' => 'Менеджер по маркетингу'],
-            ['image' => 'person_2.jpg', 'name' => 'Андрей Кузнецов',  'position' => 'Директор компании'],
-            ['image' => 'person_3.jpg', 'name' => 'Наталья Попова',   'position' => 'Владелец квартиры'],
-        ];
+        $testimonials = $this->testimonials;
 
         return view('about', compact('staff', 'testimonials'));
     }
@@ -68,12 +71,7 @@ class PageController extends Controller
             ['icon' => 'flaticon-balcony',   'title' => 'Мытьё окон',      'description' => 'Профессиональное мытьё окон любой сложности: от квартир до высотных зданий.'],
         ];
 
-        $plans = [
-            ['icon' => 'flaticon-sprayer',       'title' => 'Стартовый', 'price' => '2 990', 'active' => false],
-            ['icon' => 'flaticon-vacuum-cleaner', 'title' => 'Стандарт', 'price' => '4 990', 'active' => true],
-            ['icon' => 'flaticon-tap',            'title' => 'Премиум',  'price' => '7 490', 'active' => false],
-            ['icon' => 'flaticon-cleaning',       'title' => 'Платинум', 'price' => '9 990', 'active' => false],
-        ];
+        $plans = $this->plans;
 
         return view('services', compact('services', 'plans'));
     }
@@ -96,12 +94,7 @@ class PageController extends Controller
 
     public function pricing()
     {
-        $plans = [
-            ['icon' => 'flaticon-sprayer',       'title' => 'Стартовый', 'price' => '2 990', 'active' => false],
-            ['icon' => 'flaticon-vacuum-cleaner', 'title' => 'Стандарт', 'price' => '4 990', 'active' => true],
-            ['icon' => 'flaticon-tap',            'title' => 'Премиум',  'price' => '7 490', 'active' => false],
-            ['icon' => 'flaticon-cleaning',       'title' => 'Платинум', 'price' => '9 990', 'active' => false],
-        ];
+        $plans = $this->plans;
 
         return view('pricing', compact('plans'));
     }

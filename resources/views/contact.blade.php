@@ -25,25 +25,29 @@
             <div class="col-md-3">
               <div class="dbox w-100 text-center">
                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-map-marker"></span></div>
-                <div class="text"><p><span>Адрес:</span> г. Москва, ул. Примерная, д. 203, офис 15</p></div>
+                <div class="text"><p><span>Адрес:</span><br> г. Москва, Пресненская наб., д. 8, стр 1 </p></div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="dbox w-100 text-center">
                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-phone"></span></div>
-                <div class="text"><p><span>Телефон:</span> <a href="tel:+74951234567">+7 (495) 123-45-67</a></p></div>
+                <div class="text"><p><span>Телефоны:</span>
+                        <br><a href="tel:+79669738777">+7 (966) 973-87-77</a>
+                        <br><a href="tel:+79612462777">+7 (961) 246-27-77</a>
+                        <br><a href="tel:+79032671883">+7 (903) 267-18-83</a>
+                    </p></div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="dbox w-100 text-center">
                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-paper-plane"></span></div>
-                <div class="text"><p><span>Email:</span> <a href="mailto:info@cleaningcompany.ru">info@cleaningcompany.ru</a></p></div>
+                <div class="text"><p><span>Email:</span> <br> <a href="mailto:info@neva-global.ru">info@neva-global.ru</a></p></div>
               </div>
             </div>
             <div class="col-md-3">
               <div class="dbox w-100 text-center">
                 <div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-globe"></span></div>
-                <div class="text"><p><span>Сайт:</span> <a href="#">cleaningcompany.ru</a></p></div>
+                <div class="text"><p><span>Сайт:</span> <br> <a href="https://neva-global.ru/"> neva-global.ru </a></p></div>
               </div>
             </div>
           </div>
@@ -96,9 +100,9 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12">
+      <!--<div class="col-md-12">
         <div id="map" class="map"></div>
-      </div>
+      </div>-->
     </div>
   </div>
 </section>
@@ -112,7 +116,7 @@
             <h2 class="mb-0" style="color:white; font-size: 24px;">Подпишитесь на нашу рассылку</h2>
           </div>
           <div class="col-md-6 d-flex align-items-center">
-            <form action="#" class="subscribe-form">
+            <form action="javascript:" class="subscribe-form">
               <div class="form-group d-flex">
                 <input type="text" class="form-control" placeholder="Введите адрес email">
                 <input type="submit" value="Подписаться" class="submit px-3">

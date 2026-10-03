@@ -22,7 +22,7 @@
       @foreach($posts as $b)
       <div class="col-md-6 col-lg-4 d-flex ftco-animate">
         <div class="blog-entry align-self-stretch">
-          <a href="{{ route('blog.single') }}" class="block-20 rounded" style="background-image: url('{{ asset('images/'.$b['image']) }}');"></a>
+          <a href="{{ /*route('blog.single')*/ }}" class="block-20 rounded" style="background-image: url('{{ asset('images/'.$b['image']) }}');"></a>
           <div class="text mt-3 px-4">
             <div class="posted mb-3 d-flex">
               <div class="img author" style="background-image: url({{ asset('images/'.$b['author_image']) }});"></div>

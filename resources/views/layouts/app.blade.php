@@ -20,15 +20,15 @@
       <div class="container">
         <div class="row justify-content-between">
           <div class="col-12 col-md d-flex align-items-center">
-            <p class="mb-0 phone"><span class="mailus">Телефон:</span> <a href="#">+7 (495) 123-45-67</a> или <span class="mailus">напишите нам:</span> <a href="#">info@neva-global.ru</a></p>
+            <p class="mb-0 phone"><span class="mailus">Телефон:</span> <a href="tel:89669738777">+7 (966) 973-87-77</a> или <span class="mailus">напишите нам:</span> <a href="mailto:info@neva-global.ru">info@neva-global.ru</a></p>
           </div>
           <div class="col-12 col-md d-flex justify-content-md-end">
             <div class="social-media">
               <p class="mb-0 d-flex">
-                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+                <a href="javascript:" class="d-flex align-items-center justify-content-center"><span class="fa fa-telegram"><i class="sr-only">Telegram</i></span></a>
+                <a href="javascript:" class="d-flex align-items-center justify-content-center"><span class="fa fa-vk"><i class="sr-only">VK</i></span></a>
+                <a href="javascript:" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+                <!--<a href="javascript:" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>-->
               </p>
             </div>
           </div>
@@ -48,8 +48,6 @@
             <li class="nav-item {{ request()->routeIs('about') ? 'active' : '' }}"><a href="{{ route('about') }}" class="nav-link">О нас</a></li>
             <li class="nav-item {{ request()->routeIs('services') ? 'active' : '' }}"><a href="{{ route('services') }}" class="nav-link">Услуги</a></li>
             <li class="nav-item {{ request()->routeIs('portfolio') ? 'active' : '' }}"><a href="{{ route('portfolio') }}" class="nav-link">Портфолио</a></li>
-            <li class="nav-item {{ request()->routeIs('pricing') ? 'active' : '' }}"><a href="{{ route('pricing') }}" class="nav-link">Цены</a></li>
-            <li class="nav-item {{ request()->routeIs('blog') ? 'active' : '' }}"><a href="{{ route('blog') }}" class="nav-link">Блог</a></li>
             <li class="nav-item {{ request()->routeIs('contact') ? 'active' : '' }}"><a href="{{ route('contact') }}" class="nav-link">Контакты</a></li>
           </ul>
         </div>
