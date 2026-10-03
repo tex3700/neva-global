@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {
@@ -32,14 +33,18 @@ class PageController extends Controller
         $testimonials = $this->testimonials;
 
         $works = [
-            ['image' => 'i (18).webp', 'title' => 'Уборка дома'],
-            ['image' => 'i (18).webp', 'title' => 'Мытьё окон'],
-            ['image' => 'i (18).webp', 'title' => 'Чистка бассейна'],
-            ['image' => 'i (18).webp', 'title' => 'Уборка офиса'],
-            ['image' => 'i (18).webp', 'title' => 'Чистка ковров'],
-            ['image' => 'i (18).webp', 'title' => 'Уборка сада'],
-            ['image' => 'i (18).webp', 'title' => 'Чистка ковров'],
-            ['image' => 'i (18).webp', 'title' => 'Чистка бассейна'],
+            ['image' => 'i (3).webp', 'title' => 'Уборка номеров'],
+            ['image' => 'i (18).webp', 'title' => 'Уборка территорий'],
+            ['image' => 'i (23).webp', 'title' => 'Санаторий курорт Ерино'],
+            ['image' => 'i (29).webp', 'title' => 'Уборка холов'],
+            ['image' => 'i (31).webp', 'title' => 'Уборка номеров'],
+            ['image' => 'i (15).webp', 'title' => 'Уборка ресторанов'],
+            ['image' => 'i (40).webp', 'title' => 'Уборка номеров'],
+            ['image' => 'i (22).webp', 'title' => 'Уборка территорий'],
+            ['image' => 'i (48).webp', 'title' => 'Лепота Эко отель'],
+            ['image' => 'i (1).webp', 'title' => 'Уборка общественных помещений'],
+            ['image' => 'i (47).webp', 'title' => 'Уборка домов'],
+            ['image' => 'i (53).webp', 'title' => 'Уборка территорий'],
         ];
 
         $latestPosts = [
@@ -78,16 +83,32 @@ class PageController extends Controller
 
     public function portfolio()
     {
-        $works = [
-            ['image' => 'work-1.jpg', 'title' => 'Уборка дома'],
-            ['image' => 'work-2.jpg', 'title' => 'Мытьё окон'],
-            ['image' => 'work-3.jpg', 'title' => 'Чистка бассейна'],
-            ['image' => 'work-4.jpg', 'title' => 'Уборка офиса'],
-            ['image' => 'work-5.jpg', 'title' => 'Чистка ковров'],
-            ['image' => 'work-6.jpg', 'title' => 'Уборка сада'],
-            ['image' => 'work-7.jpg', 'title' => 'Чистка ковров'],
-            ['image' => 'work-8.jpg', 'title' => 'Чистка бассейна'],
-        ];
+        $workFiles = Storage::disk('public')->exists('work')
+            ? Storage::disk('public')->files('work')
+            : [];
+
+        $works = collect($workFiles)
+            ->filter(fn (string $path): bool => preg_match('/\.(jpe?g|png|webp)$/i', $path) === 1)
+            ->sort(fn (string $a, string $b): int => strnatcasecmp($a, $b))
+            ->values()
+            ->map(fn (string $path, int $index): array => [
+                'image' => basename($path),
+                'title' => 'Проект ' . ($index + 1),
+            ])
+            ->all();
+
+        if ($works === []) {
+            $works = [
+                ['image' => 'i.webp', 'title' => 'Уборка дома'],
+                ['image' => 'i.webp', 'title' => 'Мытьё окон'],
+                ['image' => 'i.webp', 'title' => 'Чистка бассейна'],
+                ['image' => 'i.webp', 'title' => 'Уборка офиса'],
+                ['image' => 'i.webp', 'title' => 'Чистка ковров'],
+                ['image' => 'i.webp', 'title' => 'Уборка сада'],
+                ['image' => 'i.webp', 'title' => 'Чистка ковров'],
+                ['image' => 'i.webp', 'title' => 'Чистка бассейна'],
+            ];
+        }
 
         return view('portfolio', compact('works'));
     }

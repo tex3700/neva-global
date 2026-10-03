@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ filemtime(public_path('css/style.css')) }}">
   </head>
   <body>
 
@@ -74,8 +74,8 @@
     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('js/scrollax.min.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="{{ asset('js/google-map.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/google-map.js') }}?v={{ filemtime(public_path('js/google-map.js')) }}"></script>
+    <script src="{{ asset('js/main.js') }}?v={{ filemtime(public_path('js/main.js')) }}"></script>
 
   </body>
 </html>

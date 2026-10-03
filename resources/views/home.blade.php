@@ -106,8 +106,8 @@
     <div class="row">
       @foreach($works as $w)
       <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="work img d-flex align-items-center" style="background-image: url({{ asset('storage/work/'.$w['image']) }});">
-          <a href="{{ asset('storage/work/'.$w['image']) }}" class="icon image-popup d-flex justify-content-center align-items-center">
+        <div class="work img d-flex align-items-center" style="background-image: url('{{ asset('storage/work/'.$w['image']) }}');">
+          <a href="{{ asset('storage/work/'.$w['image']) }}" class="icon image-popup d-flex justify-content-center align-items-center" data-title="{{ $w['title'] }}" title="{{ $w['title'] }}" aria-label="Открыть проект: {{ $w['title'] }}">
             <span class="fa fa-expand"></span>
           </a>
           <div class="desc w-100 px-4 text-center pt-5 mt-5">

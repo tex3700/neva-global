@@ -83,25 +83,88 @@
 	});
 
 	// magnific popup
-	$('.image-popup').magnificPopup({
-    type: 'image',
-    closeOnContentClick: true,
-    closeBtnInside: false,
-    fixedContentPos: true,
-    mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
-     gallery: {
-      enabled: true,
-      navigateByImgClick: true,
-      preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-    },
-    image: {
-      verticalFit: true
-    },
-    zoom: {
-      enabled: true,
-      duration: 300 // don't foget to change the duration also in CSS
-    }
-  });
+	if ($.fn.magnificPopup) {
+		$('.image-popup').magnificPopup({
+			type: 'image',
+			closeOnContentClick: true,
+			closeBtnInside: false,
+			fixedContentPos: true,
+			mainClass: 'mfp-no-margins mfp-with-zoom',
+			gallery: {
+				enabled: true,
+				navigateByImgClick: true,
+				preload: [0, 1]
+			},
+			image: {
+				verticalFit: true,
+				titleSrc: function(item) {
+					return item.el.attr('data-title') || item.el.attr('title') || '';
+				}
+			},
+			zoom: {
+				enabled: true,
+				duration: 300
+			}
+		});
+	}
+
+	var portfolioGallery = function() {
+		$('[data-portfolio-gallery]').each(function() {
+			var $gallery = $(this);
+			var $items = $gallery.find('[data-gallery-item]');
+			var $section = $gallery.closest('section');
+			var $pagination = $section.find('[data-gallery-pagination]');
+			var itemsPerPage = parseInt($gallery.data('items-per-page'), 10) || 8;
+			var pageCount = Math.max(1, Math.ceil($items.length / itemsPerPage));
+			var currentPage = 1;
+
+			var showPage = function(page, scrollToGallery) {
+				currentPage = ((page - 1 + pageCount) % pageCount) + 1;
+
+				$items.each(function(index) {
+					var isVisible = index >= (currentPage - 1) * itemsPerPage && index < currentPage * itemsPerPage;
+					var $item = $(this);
+
+					if (isVisible) {
+						$item.show().addClass('fadeInUp ftco-animated');
+					} else {
+						$item.hide();
+					}
+				});
+
+				$pagination.find('[data-gallery-page]').each(function() {
+					var $link = $(this);
+					var pageNumber = parseInt($link.data('gallery-page'), 10);
+
+					$link.parent().toggleClass('active', pageNumber === currentPage);
+				});
+
+				if (scrollToGallery) {
+					$('html, body').animate({
+						scrollTop: $gallery.offset().top - 120
+					}, 250);
+				}
+			};
+
+			$pagination.on('click', '[data-gallery-page]', function(event) {
+				event.preventDefault();
+				showPage(parseInt($(this).data('gallery-page'), 10), true);
+			});
+
+			$pagination.on('click', '[data-gallery-prev]', function(event) {
+				event.preventDefault();
+				showPage(currentPage - 1, true);
+			});
+
+			$pagination.on('click', '[data-gallery-next]', function(event) {
+				event.preventDefault();
+				showPage(currentPage + 1, true);
+			});
+
+			showPage(1, false);
+		});
+	};
+	portfolioGallery();
 
   $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
     disableOn: 700,
@@ -178,4 +241,3 @@
 
 
 })(jQuery);
-

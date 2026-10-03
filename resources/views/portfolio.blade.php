@@ -4,6 +4,11 @@
 
 @section('content')
 
+@php
+  $itemsPerPage = 8;
+  $pageCount = max(1, (int) ceil(count($works) / $itemsPerPage));
+@endphp
+
 <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ asset('images/bg_2.jpg') }}');" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
@@ -24,11 +29,11 @@
         <h2>Мы выполнили множество клининговых проектов</h2>
       </div>
     </div>
-    <div class="row">
+    <div class="row" data-portfolio-gallery data-items-per-page="{{ $itemsPerPage }}">
       @foreach($works as $w)
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="work img d-flex align-items-center" style="background-image: url({{ asset('images/'.$w['image']) }});">
-          <a href="{{ asset('images/'.$w['image']) }}" class="icon image-popup d-flex justify-content-center align-items-center">
+      <div class="col-md-6 col-lg-3 ftco-animate" data-gallery-item>
+        <div class="work img d-flex align-items-center" style="background-image: url('{{ asset('storage/work/'.$w['image']) }}');">
+          <a href="{{ asset('storage/work/'.$w['image']) }}" class="icon image-popup d-flex justify-content-center align-items-center" data-title="{{ $w['title'] }}" title="{{ $w['title'] }}" aria-label="Открыть проект: {{ $w['title'] }}">
             <span class="fa fa-expand"></span>
           </a>
           <div class="desc w-100 px-4 text-center pt-5 mt-5">
@@ -40,21 +45,21 @@
       </div>
       @endforeach
     </div>
+    @if($pageCount > 1)
     <div class="row mt-5">
       <div class="col text-center">
-        <div class="block-27">
+        <div class="block-27" data-gallery-pagination>
           <ul>
-            <li><a href="#">&lt;</a></li>
-            <li class="active"><span>1</span></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&gt;</a></li>
+            <li><a href="#" data-gallery-prev aria-label="Предыдущая страница">&lt;</a></li>
+            @for($page = 1; $page <= $pageCount; $page++)
+              <li class="{{ $page === 1 ? 'active' : '' }}"><a href="#" data-gallery-page="{{ $page }}">{{ $page }}</a></li>
+            @endfor
+            <li><a href="#" data-gallery-next aria-label="Следующая страница">&gt;</a></li>
           </ul>
         </div>
       </div>
     </div>
+    @endif
   </div>
 </section>
 

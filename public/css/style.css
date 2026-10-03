@@ -8794,6 +8794,7 @@ h1, h2, h3, h4, h5,
     bottom: 0;
     content: '';
     background: #2b98f0;
+    pointer-events: none;
     opacity: 0;
     z-index: 0;
     -moz-transition: all 0.3s ease;
@@ -8826,7 +8827,7 @@ h1, h2, h3, h4, h5,
     width: 70px;
     height: 70px;
     content: '';
-    z-index: 1;
+    z-index: 2;
     background: #f3e53d;
     -webkit-transform: translate(50%, 50%);
     -ms-transform: translate(50%, 50%);
