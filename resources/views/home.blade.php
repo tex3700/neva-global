@@ -100,7 +100,8 @@
     <div class="row justify-content-center pb-5 mb-3">
       <div class="col-md-12 heading-section text-center ftco-animate">
         <span class="subheading">Наши проекты</span>
-        <h2>Мы выполнили множество клининговых проектов</h2>
+        <!--<h2>Мы выполнили множество клининговых проектов</h2>-->
+          <h2>Объекты на которых мы сейчас осуществляем деятельность</h2>
       </div>
     </div>
     <div class="row">
